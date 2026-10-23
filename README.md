@@ -2,7 +2,7 @@
 
 A handwritten digit classifier built with **NumPy**, with explicit implementations of **forward propagation, backpropagation, and gradient-based parameter updates**. The project makes the mechanics of neural-network training visible, from individual matrix operations to digit predictions.
 
-The network learns from **60,000 MNIST images** using a **784 → 128 → 10** architecture. Average training cross-entropy decreases from **0.4651 to 0.0542 over 10 epochs**.
+The network learns from **60,000 MNIST images** using a **784 → 128 → 10** architecture. The model achieves **97.43% test accuracy**. Average training cross-entropy decreases from **0.4651 to 0.0542 over 10 epochs**.
 
 ## Project highlights
 
@@ -37,7 +37,7 @@ The network contains **101,770 trainable parameters**, including weights and bia
 | Bias initialization | Zeros |
 | Pixel normalization | Divide by 255 |
 
-## Training results
+## Results
 
 Average training cross-entropy decreases throughout the ten epochs:
 
@@ -55,6 +55,18 @@ Average training cross-entropy decreases throughout the ten epochs:
 | 10 | **0.0542** |
 
 These values describe the model's training loss. The prediction stage assigns each test image the digit with the highest output probability.
+
+### Test accuracy
+
+**Test accuracy: 97.43%.**
+
+The 17th notebook cell compares the predicted digits with the ground-truth labels in `mnist_test.csv` and prints **test accuracy as a percentage**:
+
+```python
+test_accuracy = np.mean(np.array(predictions) == test_data.iloc[:, 0].values)
+```
+
+Run the this cell after training and prediction to reproduce the evaluation. Results may vary between runs because the weights are randomly initialized without a fixed seed.
 
 ## How it works
 
@@ -101,21 +113,21 @@ Dependencies: **NumPy**, **pandas**, **Matplotlib**, and **Jupyter**.
 
 ### 3. Add the dataset
 
-Place `mnist_train.csv` and `mnist_test.csv` alongside `Neural_Network.ipynb` using the filenames shown above.
+Place `mnist_train.csv` and `mnist_test.csv` alongside `Neural_Network_From_Scratch.ipynb` using the filenames shown above.
 
 ### 4. Open the notebook
 
 ```bash
-jupyter notebook Neural_Network.ipynb
+jupyter notebook Neural_Network_From_Scratch.ipynb
 ```
 
-Run the cells in order through the prediction loop to explore the data, train the model, and populate the `predictions` list. Training processes one image at a time, so runtime depends on your CPU and NumPy configuration. No GPU is required.
+Run all cells in order to explore the data, train the model, generate predictions, and print test accuracy in the final cell. Training processes one image at a time, so runtime depends on your CPU and NumPy configuration. No GPU is required.
 
 ## Project files
 
 | File | Purpose |
 | --- | --- |
-| `Neural_Network.ipynb` | Data exploration, neural-network implementation, training, and prediction |
+| `Neural_Network_From_Scratch.ipynb` | Data exploration, neural-network implementation, training, and prediction |
 | `requirements.txt` | Python dependencies |
 | `README.md` | Project overview, architecture, training results, and setup |
 | `mnist_train.csv` | Training data downloaded separately |
