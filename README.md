@@ -66,7 +66,7 @@ The 17th notebook cell compares the predicted digits with the ground-truth label
 test_accuracy = np.mean(np.array(predictions) == test_data.iloc[:, 0].values)
 ```
 
-Run the this cell after training and prediction to reproduce the evaluation. Results may vary between runs because the weights are randomly initialized without a fixed seed.
+Run this cell after training and prediction to reproduce the evaluation. Results may vary between runs because the weights are randomly initialized without a fixed seed.
 
 ## How it works
 
